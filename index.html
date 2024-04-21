@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple HTML Page with Buttons</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap">
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('background5.jpeg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            font-family: Arial, sans-serif; 
+            backdrop-filter: blur(1px);
+            -webkit-backdrop-filter: blur(1px);
+            min-height: 100vh;
+            overflow-x:hidden ;
+            overflow-y:hidden ;
+        }
+
+        .button-container {
+    position: fixed;
+    top: 80%;
+    left: 45%;
+    animation: floatButton 3s ease-in-out infinite; /* Add animation */
+}
+
+@keyframes floatButton {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px); /* Adjust the height of the float */
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+        #wordDisplay {
+            position: fixed;
+            top: 23%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 24px;
+            color: white;
+            font-family: 'Cinzel Decorative', sans-serif;
+            
+        }
+
+        #myButton{
+            width:100px;
+            height: 100px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-family: 'Cinzel Decorative', sans-serif;
+            background-color: red;
+            font-size: large;
+            border-color: black;
+        }
+
+        #myButton:hover{
+            background-color: rgb(255, 66, 66);
+        }
+
+        .title{
+            position: fixed;
+            top:5%;
+            left: 37%;
+            font-size: 30px;
+            font-family: 'Cinzel Decorative', sans-serif;
+        }
+
+        
+
+
+        
+
+    </style>
+</head>
+<body>
+    <div id="title" class="title">Let's Check your aim</div>
+    <div id="wordDisplay" class="word-display"></div>
+    <div class="button-container">
+        <button id="myButton">Shoot</button>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/23.1.1/tween.umd.min.js"></script>
+
+    <script src="script.js"></script>
+</body>
+</html>

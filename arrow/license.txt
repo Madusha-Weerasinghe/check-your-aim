@@ -1,0 +1,11 @@
+Model Information:
+* title:	Overwatch - Hanzo's Arrow
+* source:	https://sketchfab.com/3d-models/overwatch-hanzos-arrow-824c3488aa25429a964ed337e58cdd38
+* author:	beyondmatter (https://sketchfab.com/beyondmatter)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Overwatch - Hanzo's Arrow" (https://sketchfab.com/3d-models/overwatch-hanzos-arrow-824c3488aa25429a964ed337e58cdd38) by beyondmatter (https://sketchfab.com/beyondmatter) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
