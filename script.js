@@ -136,12 +136,13 @@ loader.load(
     }
 );
 
-
-
-
-
 let rotationAngle = 0;
 let rotateClockwise = true;
+
+// Define snow variables
+let snowParticles;
+let snowGeometry;
+let snowMaterial;
 
 function animate() {
     requestAnimationFrame(animate);
@@ -165,6 +166,16 @@ function animate() {
     TWEEN.update();
 
     renderer.render(scene, camera);
+
+    if (snowParticles) {
+
+        
+        
+        snowParticles.position.y -= 0.03; // Adjust the falling speed as needed
+        if (snowParticles.position.y < -1) {
+            snowParticles.position.y = 10; // Reset position when particles fall below a certain point
+        }
+    }
 }
 animate();
 
@@ -173,8 +184,6 @@ function getRandomNumber(min, max) {
 }
 
 // Event listener for the button click
-
-
 
 document.getElementById('myButton').addEventListener('click', function() {
     // Reset the position of modelGroup3 to its initial position
@@ -190,31 +199,91 @@ document.getElementById('myButton').addEventListener('click', function() {
     // Add the 'show' class to trigger the fade-in animation
     document.getElementById('wordDisplay').classList.add('show');
 
+   function initSnow() {
+    console.log("Initializing snow particles...");
+    
+    // Create snow geometry
+    snowGeometry = new THREE.BufferGeometry();
+    
+    // Create snow material
+    snowMaterial = new THREE.PointsMaterial({
+        color: 0xffffff,
+        size: 0.3, // Adjust the size to your preference
+        transparent: true,
+        opacity: 1
+    });
+    
+    // Create snow particles
+    const vertices = [];
+    const numParticles = 1000;
+    const rotationSpeeds = []; // Array to hold rotation speeds for each particle
+    for (let i = 0; i < numParticles; i++) {
+        const x = Math.random() * 20 - 10;
+        const y = Math.random() * 20 - 10;
+        const z = Math.random() * 20 - 10;
+        const rotationSpeed = (Math.random() - 0.5) * 0.05; // Random rotation speed between -0.025 and 0.025
+        vertices.push(x, y, z);
+        rotationSpeeds.push(rotationSpeed);
+    }
+    snowGeometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
+    
+    // Load texture for celebration crepes
+    const textureLoader = new THREE.TextureLoader();
+    const crepeTexture = textureLoader.load('celebration.png'); // Replace 'path_to_your_texture_image.png' with the actual path to your texture image
+    
+    // Apply texture to snow material
+    snowMaterial.map = crepeTexture;
+    
+    // Create snow particles system
+    snowParticles = new THREE.Points(snowGeometry, snowMaterial);
+
+    // Set rotation speeds for each particle
+    snowParticles.rotationSpeeds = rotationSpeeds;
+    
+    console.log("Snow particles created:", snowParticles);
+    
+    // Add snow particles to the scene
+    scene.add(snowParticles);
+    
+    console.log("Snow particles added to scene.");
+}
+
+    
+    
+    if (snowParticles) {
+        scene.remove(snowParticles);
+        snowParticles = null;
+    }
+
     if (randomNumber === 1) {
+        // Initialize snow particles
+        
         // Smoothly move modelGroup3 to the new position
         new TWEEN.Tween(modelGroup3.position)
             .to({ x: 29.5, y: -0.29, z: 1.2 }, 1500) // Specify the target position and duration
             .easing(TWEEN.Easing.Quadratic.InOut) // Specify the easing function
             .start(); // Start the tween animation
-    }else if(randomNumber === 2) {
+
+            initSnow();
+    } else if (randomNumber === 2) {
         // Smoothly move modelGroup3 to the new position
         new TWEEN.Tween(modelGroup3.position)
             .to({ x: 40, y: 1, z: -1.2 }, 1500) // Specify the target position and duration
             .easing(TWEEN.Easing.Quadratic.InOut) // Specify the easing function
             .start();
-    }else if(randomNumber === 3) {
+    } else if (randomNumber === 3) {
         // Smoothly move modelGroup3 to the new position
         new TWEEN.Tween(modelGroup3.position)
             .to({ x: 40, y: -1, z: 3 }, 1500) // Specify the target position and duration
             .easing(TWEEN.Easing.Quadratic.InOut) // Specify the easing function
             .start();
-    }else if(randomNumber === 4) {
+    } else if (randomNumber === 4) {
         // Smoothly move modelGroup3 to the new position
         new TWEEN.Tween(modelGroup3.position)
             .to({ x: 29.9, y: 1, z: 1.2 }, 1500) // Specify the target position and duration
             .easing(TWEEN.Easing.Quadratic.InOut) // Specify the easing function
             .start();
-    }else if(randomNumber === 5) {
+    } else if (randomNumber === 5) {
         // Smoothly move modelGroup3 to the new position
         new TWEEN.Tween(modelGroup3.position)
             .to({ x: 29.8, y: -0.5, z: 1.3 }, 1500) // Specify the target position and duration
