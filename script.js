@@ -128,41 +128,41 @@ let snowMaterial;
 
 const clock = new THREE.Clock();
 
-let isMovingUp = true; // Initialize as true to start moving up
+let isMovingUp = true; 
 
 function rotateAndMoveModelGroup5() {
-    const deltaTime = clock.getDelta(); // Assuming you have a clock defined elsewhere
-    const angularSpeed = 1; // Adjust the rotation speed as needed
-    const verticalSpeed = 0.4; // Adjust the vertical movement speed as needed
+    const deltaTime = clock.getDelta(); 
+    const angularSpeed = 1; 
+    const verticalSpeed = 0.4; 
 
-    // Calculate the amount to rotate based on the angular speed and delta time
+    
     const deltaYaw = angularSpeed * deltaTime;
 
-    // Rotate the modelGroup5 around the y-axis
+    
     modelGroup5.rotation.y -= deltaYaw;
 
-    // Calculate the amount to move based on the vertical speed and delta time
+    
     const deltaY = verticalSpeed * deltaTime;
 
     if (isMovingUp) {
-        // Move the modelGroup5 up
+        
         modelGroup5.position.y += deltaY;
 
-        // Check if reached the desired height
+        
         if (modelGroup5.position.y >= 0.8) {
-            isMovingUp = false; // Change direction to down
+            isMovingUp = false; 
         }
     } else {
-        // Move the modelGroup5 down
+        
         modelGroup5.position.y -= deltaY;
 
-        // Check if reached the initial position
+        
         if (modelGroup5.position.y <= 0) {
-            isMovingUp = true; // Change direction to up
+            isMovingUp = true; 
         }
     }
 
-    // Optional: You may want to add boundary checks here to prevent the modelGroup5 from going beyond certain limits.
+   
 }
 
 
@@ -293,5 +293,7 @@ function displayWord(randomNumber) {
             return "Unknown";
     }
 }
+
+
 
 
